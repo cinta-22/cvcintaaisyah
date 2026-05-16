@@ -4,3 +4,5 @@ Aplikasi berbasis web untuk menampilkan *Curriculum Vitae* (CV) dan Portofolio p
 
 ---
 Cinta Aisyah Sasikirana
+607052430012
+48-01
