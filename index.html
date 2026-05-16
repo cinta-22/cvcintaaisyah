@@ -1,505 +1,539 @@
-:root {
-  --parch: #eee1ca;    /* Krem tua tua (parchment) */
-  --parch-border: #d6c6ac;
-  --night: #1b4566;    /* Navy tua (night) */
-  --night-deep: #14354f;
-  --night-accent: #2a6aa1;
-  --teal: #5bcaaf;     /* Teal pudar untuk aksen sihir */
-  --parch-gold: #b59410; /* Emas pudar yang kusam */
-  --gold-highlight: #d9b626;
-  --white: #f8eedc;   /* Putih tulang untuk teks */
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cinta Aisyah Sasikirana — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --parch:#f0e8d5;--night:#0a0e1a;--night2:#111827;--night3:#1a2235;
+  --gold:#c9972a;--gold2:#e8b84b;--gold3:#f5d780;
+  --blue:#2a4a8a;--blue2:#3a6aaa;--blue3:#85b0d8;
+  --white:#f5f0e8;
 }
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+html{scroll-behavior:smooth}
+body{
+  background:#0a0e1a;
+  background-image:radial-gradient(ellipse at 15% 10%,rgba(42,74,138,.25) 0%,transparent 50%),radial-gradient(ellipse at 85% 90%,rgba(201,151,42,.12) 0%,transparent 50%);
+  font-family:'Crimson Text',Georgia,serif;
+  color:var(--white);
+  min-height:100vh;
+  overflow-x:hidden;
 }
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  background: var(--night);
-  /* Gradasi radial untuk efek kedalaman langit malam */
-  background-image: radial-gradient(ellipse at 15% 10%, rgba(91, 202, 175, .2) 0%, transparent 50%),
-                    radial-gradient(ellipse at 85% 90%, rgba(181, 148, 16, .12) 0%, transparent 50%);
-  font-family: 'Crimson Text', Georgia, serif;
-  color: var(--white);
-  min-height: 100vh;
-  overflow-x: hidden;
-}
-
-.reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity .8s ease, transform .8s ease;
-}
-
-.reveal.on {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-#stars {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  overflow: hidden;
-}
-
-.manga-border {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 50;
-}
-
-.manga-border svg {
-  width: 100%;
-  height: 100%;
-}
-
-.wrap {
-  position: relative;
-  z-index: 10;
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 1.5rem 1.5rem 4rem;
-}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
+.reveal.on{opacity:1;transform:translateY(0)}
+#stars{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.manga-border{position:fixed;inset:0;pointer-events:none;z-index:50}
+.manga-border svg{width:100%;height:100%}
+.wrap{position:relative;z-index:10;max-width:900px;margin:0 auto;padding:1.5rem 1.5rem 4rem}
 
 /* HERO */
-.hero {
-  margin-top: 1.5rem;
-  background: linear-gradient(160deg, var(--night-deep) 0%, var(--night) 60%, var(--night-deep) 100%);
-  border: 2px solid var(--parch-gold);
-  position: relative;
-  padding: 2.5rem 2rem 2rem;
-  overflow: hidden;
+.hero{
+  margin-top:1.5rem;
+  background:linear-gradient(160deg,#0e1628 0%,#141e35 60%,#0a1020 100%);
+  border:2px solid var(--gold);
+  position:relative;padding:2.5rem 2rem 2rem;overflow:hidden;
 }
-
-.hero-inner {
-  border: 1px solid rgba(181, 148, 16, 0.25);
-  position: absolute;
-  inset: 6px;
-  pointer-events: none;
-}
-
-.hcorn {
-  position: absolute;
-  width: 40px;
-  height: 40px;
-}
-
-.hcorn svg {
-  width: 100%;
-  height: 100%;
-}
-
-.hc-tl { top: -1px; left: -1px; }
-.hc-tr { top: -1px; right: -1px; transform: scaleX(-1); }
-.hc-bl { bottom: -1px; left: -1px; transform: scaleY(-1); }
-.hc-br { bottom: -1px; right: -1px; transform: scale(-1); }
-
-.hero-flex {
-  display: flex;
-  gap: 2rem;
-  align-items: flex-start;
-  flex-wrap: wrap;
-}
-
-.char-wrap {
-  flex-shrink: 0;
-  width: 160px;
-}
-
-.char-svg {
-  width: 160px;
-  height: 220px;
-}
-
-.hero-info {
-  flex: 1;
-  min-width: 220px;
-  padding-top: .5rem;
-}
-
-.hero-label {
-  font-family: 'IM Fell English', serif;
-  font-style: italic;
-  font-size: .78rem;
-  letter-spacing: .25em;
-  color: var(--teal);
-  opacity: .8;
-  margin-bottom: .4rem;
-}
-
-.hero-name {
-  font-family: 'Cinzel Decorative', serif;
-  font-size: clamp(1.3rem, 3.5vw, 2rem);
-  color: var(--white);
-  line-height: 1.2;
-}
-
-.hero-title {
-  font-family: 'IM Fell English', serif;
-  font-style: italic;
-  font-size: 1rem;
-  color: var(--parch-gold);
-  margin: .4rem 0 1rem;
-}
-
-.rune-line {
-  display: flex;
-  align-items: center;
-  gap: .5rem;
-  color: var(--parch-gold);
-  opacity: .5;
-  font-size: .75rem;
-  letter-spacing: .2em;
-  margin: .6rem 0;
-}
-
-.rune-line::before,
-.rune-line::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: var(--parch-gold);
-  opacity: .4;
-}
-
-.pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: .45rem;
-  margin-top: .8rem;
-}
-
-.pill {
-  display: inline-flex;
-  align-items: center;
-  gap: .3rem;
-  border: 1px solid rgba(181, 148, 16, 0.4);
-  background: rgba(181, 148, 16, 0.1);
-  border-radius: 20px;
-  padding: .22rem .7rem;
-  font-size: .83rem;
-  color: var(--white);
-  text-decoration: none;
-  transition: background .2s, border-color .2s;
-}
-
-.pill:hover {
-  background: rgba(181, 148, 16, 0.25);
-  border-color: var(--parch-gold);
-}
+.hero-inner{border:1px solid rgba(201,151,42,.25);position:absolute;inset:6px;pointer-events:none}
+.hcorn{position:absolute;width:40px;height:40px}
+.hcorn svg{width:100%;height:100%}
+.hc-tl{top:-1px;left:-1px}.hc-tr{top:-1px;right:-1px;transform:scaleX(-1)}
+.hc-bl{bottom:-1px;left:-1px;transform:scaleY(-1)}.hc-br{bottom:-1px;right:-1px;transform:scale(-1)}
+.hero-flex{display:flex;gap:2rem;align-items:flex-start;flex-wrap:wrap}
+.char-wrap{flex-shrink:0;width:160px}
+.char-svg{width:160px;height:220px}
+.hero-info{flex:1;min-width:220px;padding-top:.5rem}
+.hero-label{font-family:'IM Fell English',serif;font-style:italic;font-size:.78rem;letter-spacing:.25em;color:var(--gold);opacity:.8;margin-bottom:.4rem}
+.hero-name{font-family:'Cinzel Decorative',serif;font-size:clamp(1.3rem,3.5vw,2rem);color:var(--white);line-height:1.2}
+.hero-title{font-family:'IM Fell English',serif;font-style:italic;font-size:1rem;color:var(--blue3);margin:.4rem 0 1rem}
+.rune-line{display:flex;align-items:center;gap:.5rem;color:var(--gold);opacity:.5;font-size:.75rem;letter-spacing:.2em;margin:.6rem 0}
+.rune-line::before,.rune-line::after{content:'';flex:1;height:1px;background:var(--gold);opacity:.4}
+.pills{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:.8rem}
+.pill{display:inline-flex;align-items:center;gap:.3rem;border:1px solid rgba(133,176,216,.4);background:rgba(42,74,138,.2);border-radius:20px;padding:.22rem .7rem;font-size:.83rem;color:var(--blue3);text-decoration:none;transition:background .2s,border-color .2s}
+.pill:hover{background:rgba(42,74,138,.4);border-color:var(--blue3)}
 
 /* SECTION */
-.sec {
-  background: linear-gradient(160deg, var(--night-deep) 0%, var(--night) 100%);
-  border: 1.5px solid var(--parch-gold);
-  margin: 1.5rem 0;
-  padding: 1.8rem 2rem;
-  position: relative;
-}
-
-.sec::before,
-.sec::after,
-.sec-bl,
-.sec-br {
-  content: '◆';
-  position: absolute;
-  color: var(--parch-gold);
-  font-size: .58rem;
-  opacity: .7;
-}
-
-.sec::before { top: 7px; left: 10px; }
-.sec::after { top: 7px; right: 10px; }
-.sec-bl { bottom: 7px; left: 10px; }
-.sec-br { bottom: 7px; right: 10px; }
-
-.sec-title {
-  font-family: 'Cinzel Decorative', serif;
-  font-size: .9rem;
-  color: var(--white);
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  margin-bottom: 1.1rem;
-  padding-bottom: .5rem;
-  border-bottom: 1px solid rgba(181, 148, 16, 0.3);
-  display: flex;
-  align-items: center;
-  gap: .5rem;
-}
-
-.sec-title span {
-  color: var(--parch-gold);
-}
+.sec{background:linear-gradient(160deg,#0e1628 0%,#111827 100%);border:1.5px solid var(--gold);margin:1.5rem 0;padding:1.8rem 2rem;position:relative}
+.sec::before,.sec::after,.sec-bl,.sec-br{content:'◆';position:absolute;color:var(--gold);font-size:.58rem;opacity:.7}
+.sec::before{top:7px;left:10px}.sec::after{top:7px;right:10px}
+.sec-bl{bottom:7px;left:10px}.sec-br{bottom:7px;right:10px}
+.sec-title{font-family:'Cinzel Decorative',serif;font-size:.9rem;color:var(--gold2);letter-spacing:.12em;text-transform:uppercase;margin-bottom:11rem;padding-bottom:.5rem;border-bottom:1px solid rgba(201,151,42,.3);display:flex;align-items:center;gap:.5rem}
 
 /* ABOUT */
-.about-text {
-  font-size: 1.03rem;
-  line-height: 1.95;
-  color: rgba(248, 238, 220, 0.85);
-  font-style: italic;
-}
-
-.about-text strong {
-  color: var(--white);
-  font-style: normal;
-  font-weight: 600;
-}
+.about-text{font-size:1.03rem;line-height:1.95;color:rgba(245,240,232,.8);font-style:italic}
+.about-text strong{color:var(--gold3);font-style:normal;font-weight:600}
 
 /* COURSES */
-.course-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
-  gap: .5rem;
-}
-
-.chip {
-  background: rgba(91, 202, 175, 0.1);
-  border: 1px solid rgba(181, 148, 16, 0.25);
-  padding: .42rem .65rem;
-  font-size: .84rem;
-  color: var(--white);
-  display: flex;
-  align-items: center;
-  gap: .4rem;
-}
-
-.chip::before {
-  content: '◈';
-  color: var(--teal);
-  font-size: .62rem;
-  flex-shrink: 0;
-}
+.course-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:.5rem}
+.chip{background:rgba(42,74,138,.15);border:1px solid rgba(133,176,216,.25);padding:.42rem .65rem;font-size:.84rem;color:var(--blue3);display:flex;align-items:center;gap:.4rem}
+.chip::before{content:'◈';color:var(--gold);font-size:.62rem;flex-shrink:0}
 
 /* SKILL BARS */
-.sbar-row {
-  display: flex;
-  align-items: center;
-  gap: .65rem;
-  margin-bottom: .62rem;
-}
-
-.sbar-lbl {
-  width: 145px;
-  font-size: .86rem;
-  color: rgba(248, 238, 220, 0.75);
-  flex-shrink: 0;
-}
-
-.sbar-track {
-  flex: 1;
-  height: 6px;
-  background: rgba(181, 148, 16, 0.12);
-  border: 1px solid rgba(181, 148, 16, 0.2);
-  overflow: hidden;
-}
-
-.sbar-fill {
-  height: 100%;
-  background: linear-gradient(90deg, var(--teal), var(--parch-gold));
-  width: 0;
-  transition: width 1.3s ease .2s;
-}
-
-.sbar-pct {
-  font-size: .78rem;
-  color: var(--teal);
-  width: 32px;
-  text-align: right;
-  flex-shrink: 0;
-}
+.sbar-row{display:flex;align-items:center;gap:.65rem;margin-bottom:.62rem}
+.sbar-lbl{width:145px;font-size:.86rem;color:rgba(245,240,232,.75);flex-shrink:0}
+.sbar-track{flex:1;height:6px;background:rgba(201,151,42,.12);border:1px solid rgba(201,151,42,.2);overflow:hidden}
+.sbar-fill{height:100%;background:linear-gradient(90deg,var(--blue2),var(--gold));width:0;transition:width 1.3s ease .2s}
+.sbar-pct{font-size:.78rem;color:var(--gold);width:32px;text-align:right;flex-shrink:0}
 
 /* TIMELINE */
-.timeline {
-  position: relative;
-  padding-left: 1.5rem;
-}
-
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 4px;
-  bottom: 4px;
-  width: 1px;
-  background: linear-gradient(180deg, var(--parch-gold), rgba(181, 148, 16, 0.15));
-}
-
-.titem {
-  position: relative;
-  margin-bottom: 1.5rem;
-}
-
-.titem:last-child { margin-bottom: 0; }
-
-.titem::before {
-  content: '◆';
-  position: absolute;
-  left: -1.72rem;
-  top: 3px;
-  color: var(--parch-gold);
-  font-size: .52rem;
-}
-
-.t-co {
-  font-family: 'Cinzel Decorative', serif;
-  font-size: .78rem;
-  color: var(--white);
-}
-
-.t-role {
-  font-family: 'IM Fell English', serif;
-  font-style: italic;
-  font-size: .95rem;
-  color: var(--teal);
-  margin: .1rem 0;
-}
-
-.t-period {
-  font-size: .76rem;
-  color: rgba(248, 238, 220, 0.65);
-  margin-bottom: .28rem;
-  letter-spacing: .04em;
-}
-
-.t-desc {
-  font-size: .88rem;
-  color: rgba(248, 238, 220, 0.7);
-  line-height: 1.72;
-}
+.timeline{position:relative;padding-left:1.5rem}
+.timeline::before{content:'';position:absolute;left:0;top:4px;bottom:4px;width:1px;background:linear-gradient(180deg,var(--gold),rgba(201,151,42,.15))}
+.titem{position:relative;margin-bottom:1.5rem}
+.titem:last-child{margin-bottom:0}
+.titem::before{content:'◆';position:absolute;left:-1.72rem;top:3px;color:var(--gold);font-size:.52rem}
+.t-co{font-family:'Cinzel Decorative',serif;font-size:.78rem;color:var(--gold3)}
+.t-role{font-family:'IM Fell English',serif;font-style:italic;font-size:.95rem;color:var(--blue3);margin:.1rem 0}
+.t-period{font-size:.76rem;color:rgba(201,151,42,.7);margin-bottom:.28rem;letter-spacing:.04em}
+.t-desc{font-size:.88rem;color:rgba(245,240,232,.7);line-height:1.72}
 
 /* PROJECTS */
-.proj-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: .85rem;
-}
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:.85rem}
+.proj-card{background:rgba(201,151,42,.05);border:1px solid rgba(201,151,42,.25);padding:1rem 1.05rem;position:relative;transition:transform .2s,border-color .2s;display:block;color:inherit;text-decoration:none}
+.proj-card:hover{transform:translateY(-3px);border-color:var(--gold)}
+.proj-name{font-family:'IM Fell English',serif;font-weight:600;font-size:.95rem;color:var(--gold3);margin-bottom:.28rem;padding-right:1rem}
+.proj-desc{font-size:.83rem;color:rgba(245,240,232,.63);line-height:1.6;margin-bottom:.5rem}
+.proj-badge{display:inline-block;background:rgba(42,74,138,.25);border:1px solid rgba(133,176,216,.3);color:var(--blue3);font-size:.7rem;padding:.1rem .45rem;margin:.12rem .1rem 0 0}
+.proj-ongoing{position:absolute;top:.5rem;right:.5rem;background:rgba(201,151,42,.15);border:1px solid rgba(201,151,42,.4);color:var(--gold);font-size:.65rem;padding:.08rem .4rem;letter-spacing:.04em}
 
-.proj-card {
-  background: rgba(181, 148, 16, 0.05);
-  border: 1px solid rgba(181, 148, 16, 0.2);
-  padding: 1rem 1.05rem;
-  position: relative;
-  transition: transform .2s, border-color .2s;
-  display: block;
-  color: inherit;
-  text-decoration: none;
-}
-
-.proj-card:hover {
-  transform: translateY(-3px);
-  border-color: var(--teal);
-}
-
-.proj-name {
-  font-family: 'IM Fell English', serif;
-  font-weight: 600;
-  font-size: .95rem;
-  color: var(--white);
-  margin-bottom: .28rem;
-  padding-right: 1rem;
-}
-
-.proj-desc {
-  font-size: .83rem;
-  color: rgba(248, 238, 220, 0.65);
-  line-height: 1.6;
-  margin-bottom: .5rem;
-}
-
-.proj-badge {
-  display: inline-block;
-  background: rgba(91, 202, 175, 0.1);
-  border: 1px solid rgba(181, 148, 16, 0.25);
-  color: var(--white);
-  font-size: .7rem;
-  padding: .1rem .45rem;
-  margin: .12rem .1rem 0 0;
-}
-
-.proj-ongoing {
-  position: absolute;
-  top: .5rem;
-  right: .5rem;
-  background: rgba(91, 202, 175, 0.2);
-  border: 1px solid var(--teal);
-  color: var(--teal);
-  font-size: .65rem;
-  padding: .08rem .4rem;
-  letter-spacing: .04em;
-}
+/* CERT */
+.cert-list{list-style:none}
+.cert-list li{display:flex;align-items:flex-start;gap:.55rem;padding:.42rem 0;border-bottom:1px solid rgba(201,151,42,.12);font-size:.88rem;color:rgba(245,240,232,.73)}
+.cert-list li:last-child{border:none}
+.cert-dot{color:var(--gold);flex-shrink:0;margin-top:2px}
+.cert-name{font-weight:600;color:var(--white);display:block}
 
 /* EDU */
-.edu-block { margin-bottom: .85rem; }
-.edu-block:last-child { margin: 0; }
-
-.edu-deg {
-  font-family: 'IM Fell English', serif;
-  font-size: 1rem;
-  color: var(--white);
-  font-weight: 600;
-}
-
-.edu-sch {
-  color: var(--teal);
-  font-size: .87rem;
-  font-style: italic;
-}
-
-.edu-yr {
-  color: rgba(248, 238, 220, 0.65);
-  font-size: .76rem;
-  margin-top: .1rem;
-}
+.edu-block{margin-bottom:.85rem}
+.edu-block:last-child{margin:0}
+.edu-deg{font-family:'IM Fell English',serif;font-size:1rem;color:var(--white);font-weight:600}
+.edu-sch{color:var(--blue3);font-size:.87rem;font-style:italic}
+.edu-yr{color:rgba(201,151,42,.7);font-size:.76rem;margin-top:.1rem}
 
 /* HOBBY */
-.hobby-wrap {
-  display: flex;
-  flex-wrap: wrap;
-  gap: .42rem;
-}
-
-.hobby {
-  background: rgba(181, 148, 16, 0.1);
-  border: 1px solid rgba(181, 148, 16, 0.25);
-  color: var(--white);
-  padding: .26rem .72rem;
-  font-family: 'IM Fell English', serif;
-  font-style: italic;
-  font-size: .87rem;
-}
+.hobby-wrap{display:flex;flex-wrap:wrap;gap:.42rem}
+.hobby{background:rgba(42,74,138,.15);border:1px solid rgba(133,176,216,.25);color:var(--blue3);padding:.26rem .72rem;font-family:'IM Fell English',serif;font-style:italic;font-size:.87rem}
 
 /* FOOTER */
-.footer {
-  text-align: center;
-  padding: 2rem 0 1rem;
-  color: rgba(248, 238, 220, 0.35);
-  font-family: 'IM Fell English', serif;
-  font-style: italic;
-  font-size: .87rem;
-}
-
-.ornament {
-  text-align: center;
-  color: var(--parch-gold);
-  font-size: 1rem;
-  letter-spacing: .4rem;
-  opacity: .4;
-  padding: .5rem 0;
-}
+.footer{text-align:center;padding:2rem 0 1rem;color:rgba(245,240,232,.28);font-family:'IM Fell English',serif;font-style:italic;font-size:.87rem}
+.footer a{color:rgba(201,151,42,.5);text-decoration:none}
+.ornament{text-align:center;color:var(--gold);font-size:1rem;letter-spacing:.4rem;opacity:.4;padding:.5rem 0}
 
 @media(max-width:600px){
-  .hero { padding: 1.8rem 1rem 1.5rem; }
-  .sec { padding: 1.3rem 1rem; }
-  .hero-flex { flex-direction: column; align-items: center; text-align: center; }
-  .pills { justify-content: center; }
-  .sbar-lbl { width: 110px; font-size: .78rem; }
+  .hero{padding:1.8rem 1rem 1.5rem}
+  .sec{padding:1.3rem 1rem}
+  .hero-flex{flex-direction:column;align-items:center;text-align:center}
+  .pills{justify-content:center}
+  .sbar-lbl{width:110px;font-size:.78rem}
 }
+</style>
+</head>
+<body>
+
+<div id="stars"></div>
+
+<div class="manga-border" aria-hidden="true">
+<svg viewBox="0 0 1200 800" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+  <g stroke="#c9972a" fill="none" opacity="0.65">
+    <path d="M0,0 L85,0 L85,4 L4,4 L4,85 L0,85 Z" fill="rgba(201,151,42,0.06)" stroke-width="0"/>
+    <rect x="8" y="8" width="58" height="58" stroke-width="0.6" opacity="0.35"/>
+    <path d="M14,14 L44,14 M14,14 L14,44" stroke-width="0.9"/>
+    <circle cx="14" cy="14" r="3.5" fill="#c9972a"/>
+    <path d="M32,8 L32,0 M8,32 L0,32" stroke-width="0.5" opacity="0.5"/>
+    <path d="M1200,0 L1115,0 L1115,4 L1196,4 L1196,85 L1200,85 Z" fill="rgba(201,151,42,0.06)" stroke-width="0"/>
+    <rect x="1134" y="8" width="58" height="58" stroke-width="0.6" opacity="0.35"/>
+    <path d="M1186,14 L1156,14 M1186,14 L1186,44" stroke-width="0.9"/>
+    <circle cx="1186" cy="14" r="3.5" fill="#c9972a"/>
+    <path d="M0,800 L85,800 L85,796 L4,796 L4,715 L0,715 Z" fill="rgba(201,151,42,0.06)" stroke-width="0"/>
+    <rect x="8" y="734" width="58" height="58" stroke-width="0.6" opacity="0.35"/>
+    <path d="M14,786 L44,786 M14,786 L14,756" stroke-width="0.9"/>
+    <circle cx="14" cy="786" r="3.5" fill="#c9972a"/>
+    <path d="M1200,800 L1115,800 L1115,796 L1196,796 L1196,715 L1200,715 Z" fill="rgba(201,151,42,0.06)" stroke-width="0"/>
+    <rect x="1134" y="734" width="58" height="58" stroke-width="0.6" opacity="0.35"/>
+    <path d="M1186,786 L1156,786 M1186,786 L1186,756" stroke-width="0.9"/>
+    <circle cx="1186" cy="786" r="3.5" fill="#c9972a"/>
+    <path d="M600,0 L616,18 L600,36 L584,18 Z" stroke-width="1" opacity="0.5"/>
+    <path d="M600,4 L610,18 L600,32 L590,18 Z" fill="rgba(201,151,42,0.18)" stroke-width="0"/>
+    <path d="M600,800 L616,782 L600,764 L584,782 Z" stroke-width="1" opacity="0.5"/>
+    <path d="M600,796 L610,782 L600,768 L590,782 Z" fill="rgba(201,151,42,0.18)" stroke-width="0"/>
+    <line x1="105" y1="2" x2="568" y2="2" stroke-width="0.7" opacity="0.3"/>
+    <line x1="632" y1="2" x2="1095" y2="2" stroke-width="0.7" opacity="0.3"/>
+    <line x1="105" y1="798" x2="568" y2="798" stroke-width="0.7" opacity="0.3"/>
+    <line x1="632" y1="798" x2="1095" y2="798" stroke-width="0.7" opacity="0.3"/>
+    <line x1="2" y1="105" x2="2" y2="350" stroke-width="0.5" opacity="0.2"/>
+    <line x1="1198" y1="105" x2="1198" y2="350" stroke-width="0.5" opacity="0.2"/>
+  </g>
+</svg>
+</div>
+
+<main class="wrap">
+<div class="ornament">⟨ ✦ ⟩</div>
+
+<header class="hero reveal" id="s-hero">
+  <div class="hero-inner"></div>
+  <div class="hcorn hc-tl"><svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><path d="M0,0 L38,0 L38,3 L3,3 L3,38 L0,38 Z" fill="rgba(201,151,42,0.28)"/><path d="M7,7 L24,7 M7,7 L7,24" stroke="#c9972a" stroke-width="1" fill="none"/><circle cx="7" cy="7" r="2" fill="#c9972a"/></svg></div>
+  <div class="hcorn hc-tr"><svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><path d="M2,0 L40,0 L40,38 L37,38 L37,3 L2,3 Z" fill="rgba(201,151,42,0.28)"/><path d="M33,7 L16,7 M33,7 L33,24" stroke="#c9972a" stroke-width="1" fill="none"/><circle cx="33" cy="7" r="2" fill="#c9972a"/></svg></div>
+  <div class="hcorn hc-bl"><svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><path d="M0,2 L0,40 L38,40 L38,37 L3,37 L3,2 Z" fill="rgba(201,151,42,0.28)"/><path d="M7,33 L24,33 M7,33 L7,16" stroke="#c9972a" stroke-width="1" fill="none"/><circle cx="7" cy="33" r="2" fill="#c9972a"/></svg></div>
+  <div class="hcorn hc-br"><svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><path d="M2,2 L40,2 L40,40 L2,40 L2,37 L37,37 L37,2 Z" fill="rgba(201,151,42,0.28)"/><path d="M33,33 L16,33 M33,33 L33,16" stroke="#c9972a" stroke-width="1" fill="none"/><circle cx="33" cy="33" r="2" fill="#c9972a"/></svg></div>
+
+  <div class="hero-flex">
+    <div class="char-wrap">
+      <svg class="char-svg" viewBox="0 0 160 220" xmlns="http://www.w3.org/2000/svg" aria-label="Karakter penyihir bertopi ala Witch Hat Atelier">
+        <circle cx="80" cy="208" r="32" fill="none" stroke="#c9972a" stroke-width="0.7" opacity="0.4"/>
+        <circle cx="80" cy="208" r="24" fill="none" stroke="#c9972a" stroke-width="0.35" opacity="0.3"/>
+        <path d="M80,176 L80,240 M48,208 L112,208 M57,179 L103,237 M103,179 L57,237" stroke="#c9972a" stroke-width="0.35" opacity="0.2" fill="none"/>
+        <path d="M52,142 Q42,168 32,210 Q56,200 80,206 Q104,200 128,210 Q118,168 108,142 Q96,157 80,158 Q64,157 52,142Z" fill="#1c3870" stroke="#2a5499" stroke-width="0.8"/>
+        <path d="M54,145 Q46,170 38,205" fill="none" stroke="#3a6aaa" stroke-width="0.9" opacity="0.45"/>
+        <circle cx="80" cy="164" r="2.5" fill="#c9972a"/><circle cx="80" cy="173" r="2.5" fill="#c9972a"/><circle cx="80" cy="182" r="2.5" fill="#c9972a"/>
+        <path d="M63,140 Q80,150 97,140 L99,162 Q80,167 61,162Z" fill="#e8d5bc" stroke="#cfc0a0" stroke-width="0.6"/>
+        <rect x="75" y="118" width="10" height="22" rx="5" fill="#f5e8d0"/>
+        <ellipse cx="80" cy="108" rx="21" ry="23" fill="#f5e8d0" stroke="#e0cdb0" stroke-width="0.6"/>
+        <path d="M59,100 Q51,130 46,178 Q61,167 69,142" fill="#ccdce8" stroke="#b0c5d8" stroke-width="0.5"/>
+        <path d="M101,100 Q109,130 114,178 Q99,167 91,142" fill="#ccdce8" stroke="#b0c5d8" stroke-width="0.5"/>
+        <path d="M60,92 Q70,80 80,78 Q90,80 100,92 Q94,104 80,105 Q66,104 60,92Z" fill="#ccdce8" stroke="#b0c5d8" stroke-width="0.5"/>
+        <path d="M63,88 Q71,82 80,80 Q89,82 97,88 Q91,96 80,97 Q69,96 63,88Z" fill="#d8e8f4"/>
+        <ellipse cx="72" cy="108" rx="5" ry="5.5" fill="#5b8fcc"/>
+        <ellipse cx="88" cy="108" rx="5" ry="5.5" fill="#5b8fcc"/>
+        <ellipse cx="72" cy="108" rx="3.5" ry="4" fill="#1e4a99"/>
+        <ellipse cx="88" cy="108" rx="3.5" ry="4" fill="#1e4a99"/>
+        <circle cx="74" cy="106" r="1.3" fill="white"/><circle cx="90" cy="106" r="1.3" fill="white"/>
+        <path d="M67,101 Q72,99 77,100" fill="none" stroke="#8899aa" stroke-width="1.3" stroke-linecap="round"/>
+        <path d="M83,100 Q88,99 93,101" fill="none" stroke="#8899aa" stroke-width="1.3" stroke-linecap="round"/>
+        <path d="M79,114 Q80,116 81,114" fill="none" stroke="#d4b896" stroke-width="0.8" stroke-linecap="round"/>
+        <path d="M74,119 Q80,123 86,119" fill="none" stroke="#d4a0a0" stroke-width="1.2" stroke-linecap="round"/>
+        <path d="M80,54 L58,88 L102,88 Z" fill="#1c3870" stroke="#2a5499" stroke-width="1.2"/>
+        <path d="M80,54 L70,76 L90,76 Z" fill="#2a4f8a"/>
+        <rect x="52" y="86" width="56" height="8" rx="2" fill="#2a4f8a" stroke="#3a6aaa" stroke-width="0.8"/>
+        <rect x="55" y="85" width="50" height="3.5" rx="1" fill="#c9972a" opacity="0.85"/>
+        <path d="M80,56 L84,64 L80,72 L76,64 Z" fill="#c9972a" opacity="0.9"/>
+        <path d="M80,54 Q78,46 75,42" fill="none" stroke="#c9972a" stroke-width="0.9"/>
+        <circle cx="75" cy="41" r="3.2" fill="#c9972a" opacity="0.85"/>
+        <circle cx="28" cy="78" r="2" fill="#85b0d8" opacity="0.65"/>
+        <circle cx="132" cy="68" r="1.8" fill="#c9972a" opacity="0.7"/>
+        <circle cx="24" cy="128" r="1.2" fill="#85b0d8" opacity="0.5"/>
+        <circle cx="136" cy="118" r="1.5" fill="#e8b84b" opacity="0.65"/>
+        <path d="M120,48 L124,48 M122,46 L122,50" stroke="#c9972a" stroke-width="1" opacity="0.55"/>
+        <path d="M26,54 L30,54 M28,52 L28,56" stroke="#85b0d8" stroke-width="1" opacity="0.55"/>
+        <ellipse cx="62" cy="176" rx="7" ry="5" fill="#f5e8d0" stroke="#e0cdb0" stroke-width="0.5"/>
+        <ellipse cx="98" cy="176" rx="7" ry="5" fill="#f5e8d0" stroke="#e0cdb0" stroke-width="0.5"/>
+        <rect x="62" y="174" width="36" height="22" rx="2" fill="#e8d5bc" stroke="#c9972a" stroke-width="0.8"/>
+        <line x1="68" y1="179" x2="92" y2="179" stroke="#c9972a" stroke-width="0.5" opacity="0.55"/>
+        <line x1="68" y1="183" x2="92" y2="183" stroke="#c9972a" stroke-width="0.5" opacity="0.55"/>
+        <line x1="68" y1="187" x2="84" y2="187" stroke="#c9972a" stroke-width="0.5" opacity="0.55"/>
+        <rect x="64" y="180" width="10" height="18" fill="#7a8fa0"/>
+        <rect x="86" y="180" width="10" height="18" fill="#7a8fa0"/>
+        <path d="M62,196 Q59,200 57,210 L74,210 L75,196Z" fill="#8a7060" stroke="#6a5040" stroke-width="0.5"/>
+        <path d="M98,196 Q101,200 103,210 L86,210 L85,196Z" fill="#8a7060" stroke="#6a5040" stroke-width="0.5"/>
+        <path d="M105,60 L107,65 L112,65 L108,68 L110,73 L105,70 L100,73 L102,68 L98,65 L103,65 Z" fill="#c9972a" opacity="0.4" transform="scale(0.5) translate(105,40)"/>
+      </svg>
+    </div>
+
+    <div class="hero-info">
+      <p class="hero-label">✦ GRIMOIRE DIGITAL ✦</p>
+      <h1 class="hero-name">Cinta Aisyah<br>Sasikirana</h1>
+      <p class="hero-title">Apprentice of Telecommunications &amp; Digital Spells</p>
+      <div class="rune-line">✦ ✦ ✦</div>
+      <p style="font-size:.88rem;color:rgba(245,240,232,.58);font-style:italic;line-height:1.75">
+        D3 Teknologi Telekomunikasi · Telkom University<br>
+        Asisten Lab FIT · Himpunan HMDT — PSDM
+      </p>
+      <div class="pills">
+        <a class="pill" href="mailto:cinta@student.telkomuniversity.ac.id">✉ Email</a>
+        <a class="pill" href="https://github.com/username" target="_blank">⌘ GitHub</a>
+        <a class="pill" href="https://linkedin.com/in/username" target="_blank">⬡ LinkedIn</a>
+        <span class="pill">☎ +62 8xx xxxx xxxx</span>
+      </div>
+      <p style="font-size:.72rem;color:rgba(201,151,42,.45);margin-top:.75rem;font-style:italic">
+        ✦ Ganti foto: tambahkan &lt;img src="foto.jpg"&gt; menggantikan karakter SVG di atas
+      </p>
+    </div>
+  </div>
+</header>
+
+<section class="sec reveal" id="s-about">
+  <span class="sec-bl">◆</span><span class="sec-br">◆</span>
+  <h2 class="sec-title"><span>📜</span> Tentang Saya</h2>
+  <p class="about-text">
+    Seorang <strong>apprentice ilmu telekomunikasi</strong> yang bersemangat mempelajari
+    seni menghubungkan dunia melalui gelombang, sinyal, dan kode. Menempuh studi di
+    <strong>D3 Teknologi Telekomunikasi, Telkom University</strong>, aktif sebagai
+    <strong>Asisten Laboratorium Electronics Communication</strong>, serta berkontribusi
+    nyata di himpunan HMDT sebagai agen perubahan departemen PSDM.
+    Lolos PKM tingkat fakultas dan meraih predikat <strong>Liaison Officer Terbaik NEAX PKKMB 2025</strong>.
+    Percaya bahwa setiap teknologi yang dibangun adalah mantra yang mampu mengubah
+    cara manusia terhubung — <em>"Sihir terbaik lahir dari rasa ingin tahu yang tak pernah padam."</em>
+  </p>
+</section>
+
+<section class="sec reveal" id="s-courses">
+  <span class="sec-bl">◆</span><span class="sec-br">◆</span>
+  <h2 class="sec-title"><span>⚗️</span> Mata Kuliah yang Ditempuh</h2>
+  <div class="course-grid">
+    <div class="chip">Rangkaian Listrik</div>
+    <div class="chip">Cyber Security</div>
+    <div class="chip">Transmisi Saluran Radio Frekuensi</div>
+    <div class="chip">Bengkel Elektronika</div>
+    <div class="chip">Internet of Things</div>
+    <div class="chip">Sistem Komunikasi</div>
+    <div class="chip">Elektronika Telekomunikasi</div>
+    <div class="chip">Elektronika Analog</div>
+    <div class="chip">Sistem Digital</div>
+    <div class="chip">Jaringan Komputer</div>
+    <div class="chip">Jaringan Telekomunikasi</div>
+    <div class="chip">Sistem Komunikasi Bergerak</div>
+    <div class="chip">Pengolahan Sinyal Informasi</div>
+    <div class="chip">Algoritma Pemrograman</div>
+    <div class="chip">Web Design</div>
+  </div>
+</section>
+
+<section class="sec reveal" id="s-skills">
+  <span class="sec-bl">◆</span><span class="sec-br">◆</span>
+  <h2 class="sec-title"><span>🔭</span> Keahlian &amp; Mantra</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.4rem">
+    <div>
+      <p style="font-family:'IM Fell English',serif;font-style:italic;color:var(--blue3);margin-bottom:.7rem;font-size:.88rem">Telekomunikasi &amp; RF</p>
+      <div class="sbar-row" data-p="80"><span class="sbar-lbl">Rangkaian Elektronika</span><div class="sbar-track"><div class="sbar-fill"></div></div><span class="sbar-pct">80%</span></div>
+      <div class="sbar-row" data-p="75"><span class="sbar-lbl">Sistem Radio &amp; RF</span><div class="sbar-track"><div class="sbar-fill"></div></div><span class="sbar-pct">75%</span></div>
+      <div class="sbar-row" data-p="70"><span class="sbar-lbl">IoT &amp; Sensor</span><div class="sbar-track"><div class="sbar-fill"></div></div><span class="sbar-pct">70%</span></div>
+      <div class="sbar-row" data-p="65"><span class="sbar-lbl">MATLAB / Simulasi</span><div class="sbar-track"><div class="sbar-fill"></div></div><span class="sbar-pct">65%</span></div>
+      <div class="sbar-row" data-p="68"><span class="sbar-lbl">Jaringan Komputer</span><div class="sbar-track"><div class="sbar-fill"></div></div><span class="sbar-pct">68%</span></div>
+    </div>
+    <div>
+      <p style="font-family:'IM Fell English',serif;font-style:italic;color:var(--blue3);margin-bottom:.7rem;font-size:.88rem">Pemrograman &amp; Digital</p>
+      <div class="sbar-row" data-p="75"><span class="sbar-lbl">HTML / CSS / JS</span><div class="sbar-track"><div class="sbar-fill"></div></div><span class="sbar-pct">75%</span></div>
+      <div class="sbar-row" data-p="65"><span class="sbar-lbl">Python</span><div class="sbar-track"><div class="sbar-fill"></div></div><span class="sbar-pct">65%</span></div>
+      <div class="sbar-row" data-p="62"><span class="sbar-lbl">Cisco Packet Tracer</span><div class="sbar-track"><div class="sbar-fill"></div></div><span class="sbar-pct">62%</span></div>
+      <div class="sbar-row" data-p="70"><span class="sbar-lbl">EasyEDA / PCB</span><div class="sbar-track"><div class="sbar-fill"></div></div><span class="sbar-pct">70%</span></div>
+      <div class="sbar-row" data-p="60"><span class="sbar-lbl">Cyber Security</span><div class="sbar-track"><div class="sbar-fill"></div></div><span class="sbar-pct">60%</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec reveal" id="s-projects">
+  <span class="sec-bl">◆</span><span class="sec-br">◆</span>
+  <h2 class="sec-title"><span>🔮</span> Karya &amp; Proyek</h2>
+  <p style="font-family:'IM Fell English',serif;font-style:italic;color:rgba(201,151,42,.55);font-size:.8rem;margin-bottom:.85rem">✦ Tanda berlabel "Sedang berjalan" menunjukkan proyek aktif</p>
+  <div class="proj-grid">
+
+    <div class="proj-card">
+      <span class="proj-ongoing">Sedang berjalan</span>
+      <div class="proj-name">Jemuran Otomatis Multi Sensor</div>
+      <div class="proj-desc">Pengembangan lanjutan sistem jemuran cerdas dengan integrasi multi-sensor untuk deteksi cuaca lebih presisi dan otomasi yang lebih andal.</div>
+      <span class="proj-badge">IoT</span><span class="proj-badge">Arduino</span><span class="proj-badge">Multi Sensor</span>
+    </div>
+
+    <div class="proj-card">
+      <span class="proj-ongoing">Sedang berjalan</span>
+      <div class="proj-name">Filter LPF Butterworth Sallen-Key 4 kHz</div>
+      <div class="proj-desc">Perancangan rangkaian Low Pass Filter Butterworth dengan topologi Sallen-Key pada frekuensi cutoff 4 kHz untuk aplikasi audio/RF.</div>
+      <span class="proj-badge">Analog Electronics</span><span class="proj-badge">Filter Design</span>
+    </div>
+
+    <div class="proj-card">
+      <span class="proj-ongoing">Sedang berjalan</span>
+      <div class="proj-name">Perancangan Jaringan 5G 3.5 GHz — Kampus</div>
+      <div class="proj-desc">Desain dan simulasi jaringan 5G pada frekuensi 3.5 GHz di lingkungan kampus Telkom University, mencakup cell planning dan link budget.</div>
+      <span class="proj-badge">5G</span><span class="proj-badge">RF Planning</span><span class="proj-badge">Telkom Univ</span>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-name">Sistem Radio — Soldering &amp; EasyEDA</div>
+      <div class="proj-desc">Merancang schematic, mewiring, dan menyolder sistem radio secara penuh dari desain PCB di EasyEDA hingga implementasi hardware.</div>
+      <span class="proj-badge">EasyEDA</span><span class="proj-badge">Soldering</span><span class="proj-badge">Radio RF</span>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-name">Website Marketing Ice Cream</div>
+      <div class="proj-desc">Membangun website jual beli ice cream dengan tampilan menarik, halaman katalog produk, dan formulir pemesanan online.</div>
+      <span class="proj-badge">HTML/CSS</span><span class="proj-badge">JavaScript</span><span class="proj-badge">Web Design</span>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-name">Jemuran Otomatis Sensor Hujan</div>
+      <div class="proj-desc">Sistem jemuran yang secara otomatis masuk saat hujan terdeteksi oleh sensor hujan, menggunakan mikrokontroler dan motor servo.</div>
+      <span class="proj-badge">IoT</span><span class="proj-badge">Arduino</span><span class="proj-badge">Otomasi</span>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-name">Filter Antena BPF</div>
+      <div class="proj-desc">Merancang dan mengimplementasikan Band Pass Filter (BPF) untuk sistem antena telekomunikasi pada frekuensi yang ditentukan.</div>
+      <span class="proj-badge">RF</span><span class="proj-badge">Antena</span><span class="proj-badge">Filter Design</span>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-name">Desain Jaringan Komputer — Cisco</div>
+      <div class="proj-desc">Simulasi dan perancangan topologi jaringan komputer menggunakan Cisco Packet Tracer meliputi routing, switching, dan VLAN.</div>
+      <span class="proj-badge">Cisco</span><span class="proj-badge">Networking</span><span class="proj-badge">Packet Tracer</span>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-name">Game Skywar — Python</div>
+      <div class="proj-desc">Pengembangan game Skywar berbasis Python dengan game loop, collision detection, sprite animation, dan scoring system.</div>
+      <span class="proj-badge">Python</span><span class="proj-badge">Pygame</span><span class="proj-badge">Game Dev</span>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-name">Simulasi BPSK — MATLAB</div>
+      <div class="proj-desc">Implementasi dan simulasi modulasi Binary Phase Shift Keying (BPSK) menggunakan MATLAB, lengkap dengan analisis BER terhadap SNR.</div>
+      <span class="proj-badge">MATLAB</span><span class="proj-badge">Modulasi Digital</span><span class="proj-badge">DSP</span>
+    </div>
+
+  </div>
+</section>
+
+<section class="sec reveal" id="s-exp">
+  <span class="sec-bl">◆</span><span class="sec-br">◆</span>
+  <h2 class="sec-title"><span>🕯️</span> Pengalaman &amp; Organisasi</h2>
+  <div class="timeline">
+
+    <div class="titem">
+      <div class="t-co">Asisten Laboratorium FIT — Telkom University</div>
+      <div class="t-role">Asisten Lab Electronics Communication</div>
+      <div class="t-period">Aktif</div>
+      <div class="t-desc">Memegang dan mengelola ruang Electronics Communication Lab, membimbing praktikum mahasiswa di bidang elektronika dan komunikasi.</div>
+    </div>
+
+    <div class="titem">
+      <div class="t-co">Himpunan D3 Teknologi Telekomunikasi (HMDT)</div>
+      <div class="t-role">Anggota — Departemen PSDM</div>
+      <div class="t-period">Periode 2025/2026</div>
+      <div class="t-desc">Aktif di Departemen Pengembangan Sumber Daya Manusia, berkontribusi dalam program peningkatan kompetensi dan pemberdayaan anggota himpunan.</div>
+    </div>
+
+    <div class="titem">
+      <div class="t-co">PKM — Program Kreativitas Mahasiswa</div>
+      <div class="t-role">Lolos Tingkat Fakultas · Virtual Try-On Shopping AR</div>
+      <div class="t-period">2024/2025</div>
+      <div class="t-desc">Berhasil lolos seleksi PKM tingkat fakultas dengan inovasi aplikasi belanja virtual berbasis Augmented Reality untuk pengalaman try-on produk secara digital.</div>
+    </div>
+
+    <div class="titem">
+      <div class="t-co">Dynamic 2025 — Dies Natalis HMDT</div>
+      <div class="t-role">Ketua Pelaksana</div>
+      <div class="t-period">2025</div>
+      <div class="t-desc">Memimpin seluruh jalannya acara Dies Natalis himpunan dari perencanaan, koordinasi panitia, hingga pelaksanaan hari-H.</div>
+    </div>
+
+    <div class="titem">
+      <div class="t-co">Charity — Bakti Sosial Panti Asuhan 2025</div>
+      <div class="t-role">Wakil Ketua Pelaksana</div>
+      <div class="t-period">2025</div>
+      <div class="t-desc">Membantu koordinasi kegiatan sosial bakti sosial ke panti asuhan sebagai bentuk kepedulian himpunan terhadap komunitas sekitar.</div>
+    </div>
+
+    <div class="titem">
+      <div class="t-co">MingTy — Penyambutan Mahasiswa Baru 2025</div>
+      <div class="t-role">Sekretaris I</div>
+      <div class="t-period">2025</div>
+      <div class="t-desc">Mengelola administrasi, notulensi rapat, dan dokumentasi kegiatan penyambutan mahasiswa baru D3 Teknologi Telekomunikasi.</div>
+    </div>
+
+    <div class="titem">
+      <div class="t-co">NEAX PKKMB 2025</div>
+      <div class="t-role">🏅 Liaison Officer Terbaik</div>
+      <div class="t-period">2025</div>
+      <div class="t-desc">Meraih predikat Liaison Officer Terbaik dalam kegiatan orientasi mahasiswa baru — berperan sebagai penghubung utama antara peserta dan panitia.</div>
+    </div>
+
+    <div class="titem">
+      <div class="t-co">Musyawarah Besar HMDT — Panitia Khusus</div>
+      <div class="t-role">Public Relations</div>
+      <div class="t-period">Periode 2026/2027</div>
+      <div class="t-desc">Bertanggung jawab atas komunikasi eksternal dan dokumentasi publik dalam musyawarah besar pemilihan Ketua HMDT.</div>
+    </div>
+
+    <div class="titem">
+      <div class="t-co">Charity Vol.2 2026</div>
+      <div class="t-role">Divisi Acara</div>
+      <div class="t-period">2026</div>
+      <div class="t-desc">Merancang dan mengkoordinasikan rundown serta hiburan dalam kegiatan bakti sosial lanjutan himpunan.</div>
+    </div>
+
+  </div>
+</section>
+
+<section class="sec reveal" id="s-edu">
+  <span class="sec-bl">◆</span><span class="sec-br">◆</span>
+  <h2 class="sec-title"><span>📚</span> Pendidikan</h2>
+  <div class="edu-block">
+    <div class="edu-deg">D3 Teknologi Telekomunikasi</div>
+    <div class="edu-sch">Fakultas Ilmu Terapan · Telkom University, Bandung</div>
+    <div class="edu-yr">2022 – 2025 (estimasi)</div>
+  </div>
+  <hr style="border:none;border-top:1px solid rgba(201,151,42,.15);margin:.75rem 0">
+  <div class="edu-block">
+    <div class="edu-deg">SMA / Sederajat</div>
+    <div class="edu-sch">Nama Sekolah Asal</div>
+    <div class="edu-yr">2019 – 2022</div>
+  </div>
+</section>
+
+<section class="sec reveal" id="s-hobby">
+  <span class="sec-bl">◆</span><span class="sec-br">◆</span>
+  <h2 class="sec-title"><span>🌿</span> Minat &amp; Hobi</h2>
+  <div class="hobby-wrap">
+    <span class="hobby">Membaca Manga</span>
+    <span class="hobby">Electronics Tinkering</span>
+    <span class="hobby">Web Design</span>
+    <span class="hobby">Radio Komunikasi</span>
+    <span class="hobby">IoT Projects</span>
+    <span class="hobby">Digital Art</span>
+    <span class="hobby">Organisasi Kemahasiswaan</span>
+    <span class="hobby">Game Development</span>
+  </div>
+</section>
+
+<div class="ornament" style="margin-top:1.5rem">⟨ ✦ ✦ ✦ ⟩</div>
+
+<footer class="footer">
+  Dibuat dengan ✨ oleh <em>Cinta Aisyah Sasikirana</em> ·
+  Tema terinspirasi <em>Witch Hat Atelier</em> karya Kamome Shirahama ·
+  <a href="https://github.com/username">github.com/username</a>
+</footer>
+
+</main>
+
+<script>
+(function(){
+  var c=document.getElementById('stars');
+  var f=document.createDocumentFragment();
+  for(var i=0;i<200;i++){
+    var s=document.createElement('div');
+    var sz=Math.random()*2+0.4;
+    Object.assign(s.style,{
+      position:'absolute',
+      left:Math.random()*100+'%',top:Math.random()*100+'%',
+      width:sz+'px',height:sz+'px',borderRadius:'50%',
+      background:Math.random()>0.65?'#e8b84b':'#c8d8f0',
+      opacity:(Math.random()*0.5+0.1).toFixed(2),
+      animation:'tw '+(Math.random()*4+2).toFixed(1)+'s ease-in-out '+(Math.random()*6).toFixed(1)+'s infinite'
+    });
+    f.appendChild(s);
+  }
+  c.appendChild(f);
+  var st=document.createElement('style');
+  st.textContent='@keyframes tw{0%,100%{opacity:inherit}50%{opacity:0.05}}';
+  document.head.appendChild(st);
+
+  var obs=new IntersectionObserver(function(en){
+    en.forEach(function(e){if(e.isIntersecting)e.target.classList.add('on')});
+  },{threshold:0.07});
+  document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el)});
+
+  var bObs=new IntersectionObserver(function(en){
+    en.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.querySelectorAll('.sbar-row').forEach(function(r){
+          r.querySelector('.sbar-fill').style.width=r.dataset.p+'%';
+        });
+      }
+    });
+  },{threshold:0.15});
+  var ss=document.getElementById('s-skills');
+  if(ss)bObs.observe(ss);
+})();
+</script>
+</body>
+</html>
